@@ -1,0 +1,76 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Teste modelo 3D</title>
+<meta name="description" content="Quarto, corredor e cozinha recriados em 3D no Blender a partir de um vídeo de celular. Ande pela casa com o joystick ou tocando no chão.">
+<meta name="theme-color" content="#0e1117">
+<link rel="icon" href="data:,">
+<link rel="stylesheet" href="css/site.css">
+<script type="application/json" id="i18n">{"andavelDicaJoy": "Joystick: andar", "andavelDicaOlhar": "Arraste a tela: olhar", "andavelDicaMouse": "Arraste para olhar · clique no chão ou use WASD", "andavelAberto": "Casa aberta. Arraste para olhar, toque no chão para andar ou use os pontos abaixo.", "andavelFalhou": "Não foi possível carregar a casa", "andavelTentar": "Tentar de novo", "andavelChegou": "Você está em: {p}", "andavelInicio": "De volta à cozinha", "andavelGirouEsq": "Virou para a esquerda", "andavelGirouDir": "Virou para a direita"}</script>
+<script type="importmap">{"imports":{"three":"./js/vendor/three.module.js","three/addons/":"./js/vendor/"}}</script>
+<script type="module" src="js/andavel.js"></script>
+</head>
+<body>
+<main class="pagina">
+  <header class="topo">
+    <p class="selo">Teste · Blender + three.js</p>
+    <h1>Teste modelo 3D</h1>
+    <p class="lead">Quarto, corredor e cozinha de uma casa de verdade, recriados a partir de um vídeo de 23 segundos feito no celular. A luz da noite foi calculada no Cycles e gravada nas texturas.</p>
+  </header>
+
+  <section class="tour" data-andavel="casa" aria-labelledby="tour-titulo">
+    <h2 class="visually-hidden" id="tour-titulo">A casa em 3D</h2>
+    <div class="tour__capa">
+      <img src="assets/casa-capa.jpg" alt="O quarto em 3D: paredes azuis, ventilador de teto, cama de solteiro, duas cadeiras pretas e a mesa dos PCs com luz roxa embaixo da janela" width="1280" height="800">
+      <button class="botao" type="button" data-andavel-abrir>Andar pela casa</button>
+    </div>
+    <p class="aviso" data-andavel-aviso hidden>A casa em 3D precisa de um navegador com WebGL.</p>
+  </section>
+
+  <section class="detalhes" aria-labelledby="como-titulo">
+    <h2 id="como-titulo">Como andar</h2>
+    <ul>
+      <li><strong>Celular:</strong> o joystick no canto anda, arrastar a tela olha em volta.</li>
+      <li><strong>Computador:</strong> arraste para olhar, clique no chão ou use WASD e as setas.</li>
+      <li>Os botões de baixo levam direto à cozinha, ao corredor, à mesa dos PCs, à cama e à TV com o piano.</li>
+    </ul>
+    <p class="nota">O modelo carrega só quando você toca no botão (cerca de 1,5 MB no celular). Medidas estimadas pelos móveis do vídeo; o que o vídeo não mostra, como a pia da cozinha, é suposição.</p>
+  </section>
+</main>
+
+<footer class="rodape">
+  <p>Lugus · teste interno de modelagem 3D</p>
+</footer>
+
+<div class="andavel" data-andavel-overlay role="dialog" aria-modal="true" aria-labelledby="andavel-titulo" aria-describedby="andavel-ajuda" hidden>
+  <h2 class="visually-hidden" id="andavel-titulo">A casa em 3D</h2>
+  <p class="visually-hidden" id="andavel-ajuda">Arraste para olhar e toque no chão para andar, ou use os botões abaixo. No teclado, WASD ou as setas.</p>
+  <canvas class="andavel__canvas" data-andavel-canvas aria-hidden="true"></canvas>
+  <div class="andavel__carga" data-andavel-carga>
+    <img src="assets/casa-capa.jpg" alt="" width="1280" height="800">
+    <p>Carregando a casa</p>
+    <div class="andavel__barra" data-andavel-barra role="progressbar" aria-label="Carregando a casa" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0"><span data-andavel-progresso></span></div>
+  </div>
+  <p class="andavel__dica" data-andavel-dica aria-hidden="true"><span data-andavel-dica-texto>Arraste para olhar · toque no chão para andar</span></p>
+  <div class="andavel__joy" data-andavel-joy aria-hidden="true"><span class="andavel__pino" data-andavel-pino></span></div>
+  <button class="andavel__fechar" type="button" data-andavel-fechar><span aria-hidden="true">&#215;</span><span class="visually-hidden">Fechar a casa</span></button>
+  <div class="andavel__rodape">
+    <div class="andavel__pontos" role="group" aria-label="Ir até">
+      <button class="andavel__chip" type="button" data-ponto="cozinha">Cozinha</button>
+      <button class="andavel__chip" type="button" data-ponto="corredor">Corredor</button>
+      <button class="andavel__chip" type="button" data-ponto="mesa">Mesa dos PCs</button>
+      <button class="andavel__chip" type="button" data-ponto="cama">Cama</button>
+      <button class="andavel__chip" type="button" data-ponto="tv">TV e piano</button>
+    </div>
+    <div class="andavel__acoes">
+      <button class="andavel__mini" type="button" data-girar="esq"><span aria-hidden="true">&#8634;</span><span class="visually-hidden">Virar para a esquerda</span></button>
+      <button class="andavel__mini" type="button" data-girar="dir"><span aria-hidden="true">&#8635;</span><span class="visually-hidden">Virar para a direita</span></button>
+      <button class="andavel__mini andavel__mini--texto" type="button" data-andavel-recomecar>Recomeçar</button>
+    </div>
+  </div>
+  <p class="visually-hidden" data-andavel-status role="status"></p>
+</div>
+</body>
+</html>
