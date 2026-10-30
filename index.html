@@ -3,45 +3,222 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Teste modelo 3D</title>
-<meta name="description" content="Quarto, corredor e cozinha recriados em 3D no Blender a partir de um vídeo de celular. Ande pela casa com o joystick ou tocando no chão.">
+<title>Casa de teste · Sua Marca</title>
+<meta name="description" content="Casa de teste no Bairro exemplo: cozinha, corredor e quarto recriados em 3D a partir de um vídeo de celular. Voe pela casa, compare o vídeo real com o modelo e ande pelos cômodos.">
 <meta name="theme-color" content="#0e1117">
 <link rel="icon" href="data:,">
+<link rel="preload" href="motion/poster.avif" as="image" fetchpriority="high">
 <link rel="stylesheet" href="css/site.css">
+<link rel="stylesheet" href="motion/motion-imovel.css">
+<link rel="stylesheet" href="motion/tema.css">
+<link rel="stylesheet" href="css/pagina.css">
+<script src="motion/motion-imovel.js" defer></script>
 <script type="application/json" id="i18n">{"andavelDicaJoy": "Joystick: andar", "andavelDicaOlhar": "Arraste a tela: olhar", "andavelDicaMouse": "Arraste para olhar · clique no chão ou use WASD", "andavelAberto": "Casa aberta. Arraste para olhar, toque no chão para andar ou use os pontos abaixo.", "andavelFalhou": "Não foi possível carregar a casa", "andavelTentar": "Tentar de novo", "andavelChegou": "Você está em: {p}", "andavelInicio": "De volta à cozinha", "andavelGirouEsq": "Virou para a esquerda", "andavelGirouDir": "Virou para a direita"}</script>
 <script type="importmap">{"imports":{"three":"./js/vendor/three.module.js","three/addons/":"./js/vendor/"}}</script>
 <script type="module" src="js/andavel.js"></script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "VideoObject",
+  "name": "Casa de teste: voo pelo modelo 3D",
+  "description": "Casa de teste. Bairro exemplo, Cidade exemplo. Cozinha, corredor e quarto recriados em 3D, 22,2 m² modelados, 1 quarto.",
+  "thumbnailUrl": ["https://lugusofficial.github.io/teste-modelo-3d/motion/poster.webp"],
+  "uploadDate": "2026-10-30",
+  "duration": "PT12S",
+  "contentUrl": "https://lugusofficial.github.io/teste-modelo-3d/motion/hero-h264.mp4"
+}
+</script>
 </head>
 <body>
-<main class="pagina">
-  <header class="topo">
-    <p class="selo">Teste · Blender + three.js</p>
-    <h1>Teste modelo 3D</h1>
-    <p class="lead">Quarto, corredor e cozinha de uma casa de verdade, recriados a partir de um vídeo de 23 segundos feito no celular. A luz da noite foi calculada no Cycles e gravada nas texturas.</p>
-  </header>
+<a class="pular" href="#conteudo">Pular para o conteúdo</a>
 
-  <section class="tour" data-andavel="casa" aria-labelledby="tour-titulo">
-    <h2 class="visually-hidden" id="tour-titulo">A casa em 3D</h2>
+<header class="barra">
+  <a class="barra__marca" href="#mi-hero-titulo">Sua Marca</a>
+  <nav class="barra__nav" aria-label="Seções">
+    <a href="#voo">Voo</a>
+    <a href="#real-3d">Real x 3D</a>
+    <a href="#tour">Tour 3D</a>
+    <a href="#reel">Reel</a>
+    <a href="#local">Local</a>
+  </nav>
+  <a class="barra__zap" href="https://wa.me/5513999990000?text=Ol%C3%A1!%20Vi%20a%20Casa%20de%20teste%20no%20Bairro%20exemplo%20e%20quero%20saber%20mais." target="_blank" rel="noopener">WhatsApp</a>
+</header>
+
+<section class="mi-hero" data-mi-hero data-fallback="motion/hero-fallback.webp" data-poster="motion/poster.webp" style="--mi-foco: 50% 50%" aria-labelledby="mi-hero-titulo">
+  <div class="mi-hero__midia">
+    <picture>
+      <source srcset="motion/poster.avif" type="image/avif">
+      <img src="motion/poster.webp" alt="" width="1920" height="1080" fetchpriority="high" decoding="async">
+    </picture>
+    <video muted playsinline loop autoplay preload="metadata" disablepictureinpicture disableremoteplayback aria-hidden="true" tabindex="-1">
+      <source src="motion/hero-720-av1.mp4" type="video/mp4; codecs=av01.0.08M.08" media="(max-width: 760px) and (prefers-reduced-motion: no-preference)">
+      <source src="motion/hero-720-h264.mp4" type="video/mp4; codecs=avc1.640028" media="(max-width: 760px) and (prefers-reduced-motion: no-preference)">
+      <source src="motion/hero-av1.mp4" type="video/mp4; codecs=av01.0.08M.08" media="(prefers-reduced-motion: no-preference)">
+      <source src="motion/hero-vp9.webm" type="video/webm; codecs=vp9" media="(prefers-reduced-motion: no-preference)">
+      <source src="motion/hero-h264.mp4" type="video/mp4; codecs=avc1.640028" media="(prefers-reduced-motion: no-preference)">
+    </video>
+  </div>
+  <div class="mi-hero__conteudo">
+    <p class="mi-rotulo">Modelo de demonstração · Casa</p>
+    <h1 class="mi-titulo" id="mi-hero-titulo"><span class="mi-palavra"><span style="--i:0">Casa</span></span> <span class="mi-palavra"><span style="--i:1">de</span></span> <span class="mi-palavra"><span style="--i:2"><em>teste</em></span></span></h1>
+    <p class="mi-hero__local">Bairro exemplo · Cozinha, corredor e quarto recriados em 3D</p>
+    <p class="mi-hero__preco">Sob consulta</p>
+    <div class="mi-hero__acoes">
+      <a class="mi-botao" href="https://wa.me/5513999990000?text=Ol%C3%A1!%20Vi%20a%20Casa%20de%20teste%20no%20Bairro%20exemplo%20e%20quero%20saber%20mais." target="_blank" rel="noopener"><svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true"><path d="M4 5h16v11H9l-5 4zM8 9.5h8M8 12.5h5" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>Agende sua visita</a>
+      <a class="botao-linha" href="#tour">Andar pela casa em 3D</a>
+    </div>
+  </div>
+  <button class="mi-pausa" type="button" aria-label="Pausar vídeo de fundo" aria-pressed="false">
+    <svg class="mi-ico-pausa" viewBox="0 0 24 24" aria-hidden="true"><path d="M8 5v14M16 5v14" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"/></svg>
+    <svg class="mi-ico-play" viewBox="0 0 24 24" aria-hidden="true"><path d="M8 5l11 7-11 7z" fill="currentColor"/></svg>
+  </button>
+</section>
+
+<main id="conteudo">
+
+<section class="mi-ficha" data-mi-ficha aria-labelledby="mi-ficha-titulo">
+  <p class="mi-rotulo">Ficha técnica</p>
+  <h2 class="mi-titulo" id="mi-ficha-titulo">Três cômodos, <em>medidos</em></h2>
+  <ul class="mi-ficha__grade">
+    <li class="mi-ficha__item mi-revela"><div class="mi-ficha__num"><span class="mi-sr">22,2 m²</span><span aria-hidden="true" data-mi-contador data-valor="22.2" data-decimais="1">22,2</span><span class="mi-ficha__un" aria-hidden="true">m²</span></div><div class="mi-ficha__rot">Área modelada</div></li>
+    <li class="mi-ficha__item mi-revela"><div class="mi-ficha__num"><span class="mi-sr">3</span><span aria-hidden="true" data-mi-contador data-valor="3" data-decimais="0">3</span></div><div class="mi-ficha__rot">Cômodos em 3D</div></li>
+    <li class="mi-ficha__item mi-revela"><div class="mi-ficha__num"><span class="mi-sr">1</span><span aria-hidden="true" data-mi-contador data-valor="1" data-decimais="0">1</span></div><div class="mi-ficha__rot">Quarto</div></li>
+    <li class="mi-ficha__item mi-revela"><div class="mi-ficha__num"><span class="mi-sr">1,30 m</span><span aria-hidden="true" data-mi-contador data-valor="1.3" data-decimais="2">1,30</span><span class="mi-ficha__un" aria-hidden="true">m</span></div><div class="mi-ficha__rot">Largura do corredor</div></li>
+  </ul>
+  <ul class="comodos mi-revela" aria-label="Cômodos modelados">
+    <li><strong>Cozinha</strong><span>7,6 m² · geladeira, fogão e janela de passagem</span></li>
+    <li><strong>Corredor</strong><span>3,7 m² · azulejo de flores até o teto</span></li>
+    <li><strong>Quarto</strong><span>10,8 m² · cama, mesa dos PCs, TV e piano</span></li>
+  </ul>
+  <div class="mi-ficha__preco mi-revela">
+    <div><p class="mi-rotulo">Valor</p><p class="mi-ficha__valor">Sob consulta</p></div>
+    <p class="mi-ficha__extras">Imóvel de demonstração. Medidas estimadas pelos móveis do vídeo.</p>
+  </div>
+</section>
+
+<div class="intro" id="voo">
+  <p class="mi-rotulo">Voo pela casa</p>
+  <h2 class="mi-titulo">Role a página e <em>entre</em></h2>
+  <p>Da cozinha ao quarto num único plano, renderizado no Blender com a luz da noite.</p>
+</div>
+<section class="mi-scrub" data-mi-scrub data-quadros="72" data-base="motion/quadros/q_" data-digitos="3" aria-label="Voo pela casa: da cozinha ao quarto">
+  <div class="mi-scrub__palco">
+    <canvas aria-hidden="true"></canvas>
+    <img class="mi-scrub__estatico" src="motion/quadros/q_036.webp" alt="Voo pela casa: da cozinha ao quarto" loading="lazy" decoding="async">
+    <div class="mi-scrub__passos">
+      <div class="mi-passo" data-mi-passo data-de="0.000" data-ate="0.333"><h3>Cozinha</h3><p>Geladeira, fogão e a janela de passagem, no lugar do vídeo.</p></div>
+      <div class="mi-passo" data-mi-passo data-de="0.333" data-ate="0.667"><h3>Corredor</h3><p>1,30 m de largura e o azulejo de flores até o teto.</p></div>
+      <div class="mi-passo" data-mi-passo data-de="0.667" data-ate="1.01"><h3>Quarto</h3><p>Cama, mesa dos PCs e a TV com o piano, medidos pelos móveis.</p></div>
+    </div>
+    <div class="mi-scrub__barra" aria-hidden="true"></div>
+  </div>
+</section>
+
+<section class="bloco real3d" id="real-3d" aria-labelledby="real3d-titulo">
+  <div class="real3d__texto mi-revela">
+    <p class="mi-rotulo">Vídeo real x modelo 3D</p>
+    <h2 class="mi-titulo" id="real3d-titulo">Do celular ao <em>3D</em></h2>
+    <p>Um vídeo de 23 segundos feito no celular virou um modelo que dá para percorrer. Arraste a linha e compare o mesmo ângulo do quarto.</p>
+    <ul class="cartoes" aria-label="Quadros do vídeo original">
+      <li><img src="assets/real/real-q03.webp" alt="Corredor visto da cozinha, com o quarto azul ao fundo" width="600" height="800" loading="lazy" decoding="async"><span>Corredor</span></li>
+      <li><img src="assets/real/real-q06.webp" alt="Quarto azul com a cama, a cadeira e a mesa dos PCs" width="600" height="800" loading="lazy" decoding="async"><span>Quarto</span></li>
+      <li><img src="assets/real/real-q13.webp" alt="Mesa dos PCs embaixo da janela, com luz roxa" width="600" height="800" loading="lazy" decoding="async"><span>Mesa dos PCs</span></li>
+      <li><img src="assets/real/real-q22.webp" alt="TV na parede acima do piano" width="600" height="800" loading="lazy" decoding="async"><span>TV e piano</span></li>
+    </ul>
+    <p class="nota">Quadros do vídeo original, ampliados.</p>
+  </div>
+  <figure class="mi-ad mi-revela" data-mi-ad data-rotulo-antes="vídeo real">
+    <img src="motion/depois.webp" alt="Modelo 3D: o mesmo ângulo do quarto" loading="lazy" decoding="async">
+    <img class="mi-ad__antes" src="motion/antes.webp" alt="Vídeo real: o quarto com a cama e a mesa dos PCs" loading="lazy" decoding="async">
+    <div class="mi-ad__linha" aria-hidden="true"></div>
+    <div class="mi-ad__alca" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M9 6l-6 6 6 6M15 6l6 6-6 6" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+    <span class="mi-ad__tag mi-ad__tag--antes" aria-hidden="true">Vídeo real</span>
+    <span class="mi-ad__tag mi-ad__tag--depois" aria-hidden="true">Modelo 3D</span>
+    <input type="range" min="0" max="100" step="1" value="50" aria-label="Comparar vídeo real e modelo 3D: use as setas">
+  </figure>
+</section>
+
+<section class="bloco tour-bloco" id="tour" aria-labelledby="tour-titulo">
+  <div class="tour-bloco__cabeca mi-revela">
+    <p class="mi-rotulo">Tour 3D</p>
+    <h2 class="mi-titulo" id="tour-titulo">Ande pela <em>casa</em></h2>
+    <p>Joystick no celular, mouse e WASD no computador. Atalhos levam direto à cozinha, ao corredor, à mesa, à cama e à TV.</p>
+  </div>
+  <div class="tour" data-andavel="casa">
     <div class="tour__capa">
-      <img src="assets/casa-capa.jpg" alt="O quarto em 3D: paredes azuis, ventilador de teto, cama de solteiro, duas cadeiras pretas e a mesa dos PCs com luz roxa embaixo da janela" width="1280" height="800">
+      <img src="assets/casa-capa.jpg" alt="O quarto em 3D: paredes azuis, ventilador de teto, cama de solteiro, duas cadeiras pretas e a mesa dos PCs com luz roxa embaixo da janela" width="1280" height="800" loading="lazy" decoding="async">
       <button class="botao" type="button" data-andavel-abrir>Andar pela casa</button>
     </div>
     <p class="aviso" data-andavel-aviso hidden>A casa em 3D precisa de um navegador com WebGL.</p>
-  </section>
+  </div>
+  <ul class="como">
+    <li><strong>Celular</strong><span>O joystick no canto anda, arrastar a tela olha em volta.</span></li>
+    <li><strong>Computador</strong><span>Arraste para olhar, clique no chão ou use WASD e as setas.</span></li>
+    <li><strong>Leve</strong><span>O modelo só carrega no toque do botão, cerca de 1,5 MB no celular.</span></li>
+  </ul>
+</section>
 
-  <section class="detalhes" aria-labelledby="como-titulo">
-    <h2 id="como-titulo">Como andar</h2>
-    <ul>
-      <li><strong>Celular:</strong> o joystick no canto anda, arrastar a tela olha em volta.</li>
-      <li><strong>Computador:</strong> arraste para olhar, clique no chão ou use WASD e as setas.</li>
-      <li>Os botões de baixo levam direto à cozinha, ao corredor, à mesa dos PCs, à cama e à TV com o piano.</li>
+<section class="bloco reel" id="reel" aria-labelledby="reel-titulo">
+  <div class="reel__tela mi-revela">
+    <video class="reel__video" controls playsinline muted preload="none" poster="assets/reel/reel-poster.webp" width="720" height="1280" aria-label="Reel vertical da Casa de teste, 31 segundos, sem som">
+      <source src="assets/reel/reel-720.mp4" type="video/mp4">
+    </video>
+  </div>
+  <div class="reel__texto mi-revela">
+    <p class="mi-rotulo">Reel 9:16</p>
+    <h2 class="mi-titulo" id="reel-titulo">Pronto para o <em>Instagram</em></h2>
+    <p>Abertura, galeria, ficha, mapa, real x 3D e chamada para o WhatsApp em 31 segundos, no formato vertical.</p>
+    <p class="nota">O vídeo só baixa quando você dá o play.</p>
+  </div>
+</section>
+
+<section class="mi-local" id="local" aria-labelledby="mi-local-titulo">
+  <div class="mi-revela">
+    <p class="mi-rotulo">Localização</p>
+    <h2 class="mi-titulo" id="mi-local-titulo">Tudo <em>perto</em></h2>
+    <ul class="mi-local__lista">
+      <li><span><svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true" style="vertical-align:-3px;margin-right:.5rem;color:var(--mi-destaque)"><path d="M2 16c2.5 0 2.5-2 5-2s2.5 2 5 2 2.5-2 5-2 2.5 2 5 2M2 20.5c2.5 0 2.5-2 5-2s2.5 2 5 2 2.5-2 5-2 2.5 2 5 2M8 10a4 4 0 0 1 8 0" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>Praia</span><span><strong>6</strong> <small>min a pé</small></span></li>
+      <li><span><svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true" style="vertical-align:-3px;margin-right:.5rem;color:var(--mi-destaque)"><path d="M2 9l10-5 10 5-10 5zM6 11v5c3 2 9 2 12 0v-5" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>Escola</span><span><strong>8</strong> <small>min a pé</small></span></li>
+      <li><span><svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true" style="vertical-align:-3px;margin-right:.5rem;color:var(--mi-destaque)"><path d="M5 8h14l-1 12H6zM9 8V6a3 3 0 0 1 6 0v2" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>Comércio</span><span><strong>4</strong> <small>min a pé</small></span></li>
     </ul>
-    <p class="nota">O modelo carrega só quando você toca no botão (cerca de 1,5 MB no celular). Medidas estimadas pelos móveis do vídeo; o que o vídeo não mostra, como a pia da cozinha, é suposição.</p>
-  </section>
+    <p class="nota aviso-mapa">Localização ilustrativa: Bairro exemplo, com pontos e tempos de exemplo.</p>
+  </div>
+  <svg class="mi-mapa" viewBox="0 0 1200 800" role="img" aria-labelledby="mi-mapa-t mi-mapa-d">
+<title id="mi-mapa-t">Mapa ilustrativo da região do imóvel</title>
+<desc id="mi-mapa-d">Localização ilustrativa. Praia: 6 min a pé; Escola: 8 min a pé; Comércio: 4 min a pé.</desc>
+<defs><pattern id="mi-pontos" width="30" height="30" patternUnits="userSpaceOnUse"><circle cx="15" cy="15" r="1.3" fill="#eef1f6" fill-opacity=".12"/></pattern><clipPath id="mi-quadro"><rect width="1200" height="800" rx="4"/></clipPath></defs>
+<g clip-path="url(#mi-quadro)"><rect width="1200" height="800" fill="#0e1117"/><rect width="1200" height="800" fill="url(#mi-pontos)"/>
+<path d="M 84 796.3 L 1151.6 786.7 L 1151.6 1231.3 L 84 1231.3 Z" fill="#253645"/>
+<path d="M 840.2 240.5 L 951.4 240.5 L 951.4 337.2 L 840.2 337.2 Z" fill="#26302a"/>
+<path class="mi-via" pathLength="1" d="M 84 728.7 L 1151.6 719" fill="none" stroke="#eef1f6" stroke-opacity=".22" stroke-width="5" stroke-linecap="round"/>
+<path class="mi-via" pathLength="1" d="M 617.8 728.7 L 662.3 -25.3" fill="none" stroke="#eef1f6" stroke-opacity=".22" stroke-width="5" stroke-linecap="round"/>
+<circle cx="617.8" cy="361.3" r="174.9" fill="none" stroke="#eef1f6" stroke-opacity=".28" stroke-width="1.5" stroke-dasharray="6 6"/>
+<text x="617.8" y="178.4" text-anchor="middle" font-size="15" letter-spacing="2" fill="#eef1f6" fill-opacity=".6" font-family="var(--mi-fonte-texto)">5 MIN A PÉ</text>
+<circle cx="617.8" cy="361.3" r="349.8" fill="none" stroke="#eef1f6" stroke-opacity=".28" stroke-width="1.5" stroke-dasharray="6 6"/>
+<text x="617.8" y="3.5" text-anchor="middle" font-size="15" letter-spacing="2" fill="#eef1f6" fill-opacity=".6" font-family="var(--mi-fonte-texto)">10 MIN A PÉ</text>
+<path class="mi-rota" style="--i:0" pathLength="1" d="M 617.8 361.3 Q 505.4 508 537.7 690" fill="none" stroke="#9d8bf5" stroke-width="4" stroke-linecap="round"/>
+<path class="mi-rota" style="--i:1" pathLength="1" d="M 617.8 361.3 Q 647 198.5 786.8 110" fill="none" stroke="#9d8bf5" stroke-width="4" stroke-linecap="round"/>
+<path class="mi-rota" style="--i:2" pathLength="1" d="M 617.8 361.3 Q 534.6 272.8 413.2 274.3" fill="none" stroke="#9d8bf5" stroke-width="4" stroke-linecap="round"/>
+<g class="mi-pino" style="--i:0"><circle cx="537.7" cy="690" r="22" fill="#9d8bf5"/><g transform="translate(525.1 677.4) scale(1.054)"><path d="M2 16c2.5 0 2.5-2 5-2s2.5 2 5 2 2.5-2 5-2 2.5 2 5 2M2 20.5c2.5 0 2.5-2 5-2s2.5 2 5 2 2.5-2 5-2 2.5 2 5 2M8 10a4 4 0 0 1 8 0" fill="none" stroke="#0e1117" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></g><text class="mi-mapa__rot" x="571.7" y="687" text-anchor="start" font-size="20" font-weight="600" fill="#eef1f6" paint-order="stroke" stroke="#0e1117" stroke-width="5" font-family="var(--mi-fonte-texto)">Praia</text><text class="mi-mapa__rot" x="571.7" y="710" text-anchor="start" font-size="17" fill="#9d8bf5" paint-order="stroke" stroke="#0e1117" stroke-width="5" font-family="var(--mi-fonte-texto)">6 min a pé</text></g>
+<g class="mi-pino" style="--i:1"><circle cx="786.8" cy="110" r="22" fill="#9d8bf5"/><g transform="translate(774.1 97.3) scale(1.054)"><path d="M2 9l10-5 10 5-10 5zM6 11v5c3 2 9 2 12 0v-5" fill="none" stroke="#0e1117" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></g><text class="mi-mapa__rot" x="820.8" y="107" text-anchor="start" font-size="20" font-weight="600" fill="#eef1f6" paint-order="stroke" stroke="#0e1117" stroke-width="5" font-family="var(--mi-fonte-texto)">Escola</text><text class="mi-mapa__rot" x="820.8" y="130" text-anchor="start" font-size="17" fill="#9d8bf5" paint-order="stroke" stroke="#0e1117" stroke-width="5" font-family="var(--mi-fonte-texto)">8 min a pé</text></g>
+<g class="mi-pino" style="--i:2"><circle cx="413.2" cy="274.3" r="22" fill="#9d8bf5"/><g transform="translate(400.6 261.7) scale(1.054)"><path d="M5 8h14l-1 12H6zM9 8V6a3 3 0 0 1 6 0v2" fill="none" stroke="#0e1117" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></g><text class="mi-mapa__rot" x="447.2" y="271.3" text-anchor="start" font-size="20" font-weight="600" fill="#eef1f6" paint-order="stroke" stroke="#0e1117" stroke-width="5" font-family="var(--mi-fonte-texto)">Comércio</text><text class="mi-mapa__rot" x="447.2" y="294.3" text-anchor="start" font-size="17" fill="#9d8bf5" paint-order="stroke" stroke="#0e1117" stroke-width="5" font-family="var(--mi-fonte-texto)">4 min a pé</text></g>
+<circle class="mi-pulso" cx="617.8" cy="361.3" r="28" fill="none" stroke="#eef1f6" stroke-width="2"/>
+<g class="mi-pino" style="--i:0"><circle cx="617.8" cy="361.3" r="28" fill="#eef1f6"/><g transform="translate(601.0 344.5) scale(1.400)"><path d="M3 11l9-7 9 7M5 10v10h14V10M10 20v-6h4v6" fill="none" stroke="#0e1117" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></g></g>
+<text x="617.8" y="415.3" text-anchor="middle" font-size="16" font-weight="600" letter-spacing="3" fill="#eef1f6" paint-order="stroke" stroke="#0e1117" stroke-width="5" font-family="var(--mi-fonte-texto)">LOCALIZAÇÃO ILUSTRATIVA</text>
+</g></svg>
+</section>
+
+<section class="mi-ficha cta" aria-labelledby="mi-cta-titulo">
+  <p class="mi-rotulo">Casa de teste</p>
+  <h2 class="mi-titulo mi-revela" id="mi-cta-titulo">Agende sua <em>visita</em></h2>
+  <div class="mi-hero__acoes"><a class="mi-botao" href="https://wa.me/5513999990000?text=Ol%C3%A1!%20Vi%20a%20Casa%20de%20teste%20no%20Bairro%20exemplo%20e%20quero%20saber%20mais." target="_blank" rel="noopener"><svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true"><path d="M4 5h16v11H9l-5 4zM8 9.5h8M8 12.5h5" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>WhatsApp (13) 99999-0000</a></div>
+  <p class="mi-ficha__extras">Sua Marca</p>
+</section>
+
 </main>
 
 <footer class="rodape">
-  <p>Lugus · teste interno de modelagem 3D</p>
+  <p>Sua Marca · imóvel de demonstração, dados de exemplo · modelo 3D e vídeos feitos pela Lugus</p>
 </footer>
 
 <div class="andavel" data-andavel-overlay role="dialog" aria-modal="true" aria-labelledby="andavel-titulo" aria-describedby="andavel-ajuda" hidden>
@@ -49,7 +226,7 @@
   <p class="visually-hidden" id="andavel-ajuda">Arraste para olhar e toque no chão para andar, ou use os botões abaixo. No teclado, WASD ou as setas.</p>
   <canvas class="andavel__canvas" data-andavel-canvas aria-hidden="true"></canvas>
   <div class="andavel__carga" data-andavel-carga>
-    <img src="assets/casa-capa.jpg" alt="" width="1280" height="800">
+    <img src="assets/casa-capa.jpg" alt="" width="1280" height="800" loading="lazy">
     <p>Carregando a casa</p>
     <div class="andavel__barra" data-andavel-barra role="progressbar" aria-label="Carregando a casa" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0"><span data-andavel-progresso></span></div>
   </div>

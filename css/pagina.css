@@ -1,0 +1,107 @@
+/* Pagina do imovel: barra, blocos entre os componentes do motion-imovel, real x 3D, tour e reel.
+   Cores e fontes vem do motion/tema.css (--mi-*); o js/andavel.js continua lendo --color-text do site.css. */
+body { font-family: var(--mi-fonte-texto); background: var(--mi-fundo); color: var(--mi-texto); }
+html { scroll-behavior: smooth; scroll-padding-top: 4.5rem; }
+@media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
+
+.pular {
+  position: absolute; left: 1rem; top: -4rem; z-index: 60; padding: .75rem 1rem;
+  background: var(--mi-texto); color: var(--mi-fundo); border-radius: var(--radius-pill); font-weight: 700;
+}
+.pular:focus { top: 1rem; }
+
+.barra {
+  position: fixed; inset: 0 0 auto 0; z-index: 40; display: flex; align-items: center; gap: 1.5rem;
+  padding: .875rem max(1rem, env(safe-area-inset-left)); padding-right: max(1rem, env(safe-area-inset-right));
+  background: rgba(14, 17, 23, .62); -webkit-backdrop-filter: blur(14px); backdrop-filter: blur(14px);
+}
+.barra a { color: var(--mi-texto); text-decoration: none; }
+.barra__marca { font-family: var(--mi-fonte-titulo); font-size: 1.5rem; line-height: 1; letter-spacing: .01em; }
+.barra__nav { display: none; gap: 1.75rem; margin-left: auto; font-size: .9375rem; }
+.barra__nav a { color: var(--mi-sutil); padding: .5rem 0; }
+.barra__nav a:hover { color: var(--mi-texto); }
+.barra__zap {
+  margin-left: auto; min-height: 2.75rem; display: inline-flex; align-items: center; padding: 0 1.125rem;
+  border-radius: var(--radius-pill); background: var(--mi-destaque); color: var(--mi-fundo) !important; font-weight: 700; font-size: .9375rem;
+}
+.barra a:focus-visible, .botao-linha:focus-visible { outline: 3px solid var(--mi-destaque); outline-offset: 3px; }
+@media (min-width: 900px) {
+  .barra { padding-inline: 2.5rem; }
+  .barra__nav { display: flex; }
+  .barra__zap { margin-left: 0; }
+}
+
+.botao-linha {
+  display: inline-flex; align-items: center; min-height: 3rem; padding: 0 1.375rem;
+  border-radius: var(--radius-pill); color: var(--mi-texto); text-decoration: none; font-weight: 600;
+  box-shadow: inset 0 0 0 1.5px rgba(238, 241, 246, .55); background: rgba(14, 17, 23, .35);
+}
+.botao-linha:hover { box-shadow: inset 0 0 0 1.5px var(--mi-texto); }
+.mi-hero__acoes { display: flex; flex-wrap: wrap; gap: .75rem; }
+
+/* blocos de pagina */
+.intro, .bloco { width: min(72rem, 100% - 2rem); margin-inline: auto; }
+.intro { padding-top: clamp(4rem, 9vw, 7rem); padding-bottom: 1.5rem; display: grid; gap: .75rem; max-width: 46rem; }
+.intro p:last-child, .real3d__texto > p, .tour-bloco__cabeca p, .reel__texto > p { color: var(--mi-sutil); font-size: 1.0625rem; max-width: 38rem; }
+.bloco { padding-block: clamp(4rem, 9vw, 7rem); }
+.intro .mi-titulo, .bloco .mi-titulo { font-size: clamp(2.25rem, 1.6rem + 3vw, 3.75rem); line-height: 1.02; }
+.nota { color: var(--mi-sutil); font-size: .875rem; }
+
+/* comodos na ficha */
+.comodos { list-style: none; margin: 2rem 0 0; padding: 0; display: grid; gap: .75rem; }
+.comodos li { display: grid; gap: .25rem; padding: 1.125rem 1.25rem; border-radius: var(--radius); background: #181c25; }
+.comodos strong { font-family: var(--mi-fonte-titulo); font-weight: 400; font-size: 1.625rem; line-height: 1.1; }
+.comodos span { color: var(--mi-sutil); font-size: .9375rem; }
+@media (min-width: 760px) { .comodos { grid-template-columns: repeat(3, 1fr); } }
+
+/* real x 3D */
+.real3d { display: grid; gap: 2.5rem; align-items: center; }
+.real3d__texto { display: grid; gap: 1rem; }
+.real3d .mi-ad { margin: 0; width: 100%; max-width: 34rem; justify-self: center; aspect-ratio: 3 / 4; }
+.real3d .mi-ad img { width: 100%; height: 100%; object-fit: cover; }
+.cartoes { list-style: none; margin: .5rem 0 0; padding: 0; display: grid; grid-template-columns: repeat(4, 1fr); gap: .625rem; }
+.cartoes li { position: relative; border-radius: var(--radius); overflow: hidden; background: #181c25; }
+.cartoes img { width: 100%; aspect-ratio: 3 / 4; object-fit: cover; filter: saturate(1.05) contrast(1.04); }
+.cartoes span {
+  position: absolute; inset: auto 0 0 0; padding: 1.5rem .5rem .5rem; font-size: .75rem; font-weight: 600; line-height: 1.2;
+  background: linear-gradient(transparent, rgba(8, 10, 14, .88));
+}
+@media (min-width: 960px) { .real3d { grid-template-columns: 1fr 1fr; gap: 4rem; } }
+
+/* tour andavel */
+.tour-bloco { display: grid; gap: 2rem; }
+.tour-bloco__cabeca { display: grid; gap: .75rem; }
+.tour-bloco .tour__capa { box-shadow: 0 2rem 4rem rgba(0, 0, 0, .45); }
+.tour-bloco .tour__capa img { aspect-ratio: 16 / 9; }
+.tour-bloco .botao { background: var(--mi-destaque); color: var(--mi-fundo); font-family: var(--mi-fonte-texto); font-weight: 700; min-height: 3.5rem; padding-inline: 2rem; }
+.tour-bloco .botao:hover { background: #b6a8f8; }
+.como { list-style: none; margin: 0; padding: 0; display: grid; gap: 1.25rem; }
+.como li { display: grid; gap: .25rem; }
+.como strong { font-size: .8125rem; letter-spacing: .12em; text-transform: uppercase; color: var(--mi-destaque); }
+.como span { color: var(--mi-sutil); }
+@media (min-width: 760px) { .como { grid-template-columns: repeat(3, 1fr); gap: 2rem; } }
+
+/* reel 9:16 */
+.reel { display: grid; gap: 2.5rem; align-items: center; }
+.reel__tela {
+  justify-self: center; width: min(20rem, 100%); padding: .625rem; border-radius: 2.25rem;
+  background: #181c25; box-shadow: 0 2.5rem 5rem rgba(0, 0, 0, .55);
+}
+.reel__video { display: block; width: 100%; height: auto; aspect-ratio: 9 / 16; border-radius: 1.75rem; background: #000; object-fit: cover; }
+.reel__texto { display: grid; gap: 1rem; }
+@media (min-width: 900px) { .reel { grid-template-columns: auto 1fr; gap: 5rem; } .reel__tela { width: 21rem; } }
+
+.aviso-mapa { margin-top: 1.25rem; }
+.cta { text-align: center; justify-items: center; }
+.cta .mi-hero__acoes { justify-content: center; }
+
+.rodape { color: var(--mi-sutil); font-family: var(--mi-fonte-texto); }
+
+/* o reset global de img do site.css (height:auto) encolhia o poster do hero */
+.mi-hero__midia img { width: 100%; height: 100%; max-width: none; }
+/* veu extra: o render da cozinha e claro e apagava o rotulo do hero no celular */
+.mi-hero__midia::after {
+  content: ""; position: absolute; inset: 0; pointer-events: none;
+  background: linear-gradient(to top, rgba(14, 17, 23, .9) 0%, rgba(14, 17, 23, .55) 38%, rgba(14, 17, 23, 0) 72%);
+}
+.mi-hero__conteudo { text-shadow: 0 1px 14px rgba(0, 0, 0, .5); }
